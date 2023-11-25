@@ -64,7 +64,7 @@ class TestDeathNote {
             this.deathNote.writeDeathCause("bla bla bla");
             fail("Writing a death cause before writing name did not throw any exception");
         } catch(IllegalStateException e){
-            assertEquals("Couldn't write death's cause before name", e.getMessage());
+            assertEquals("Death note is empty", e.getMessage());
         }
 
         String name = "Mattia Ronchi";
@@ -87,7 +87,7 @@ class TestDeathNote {
             this.deathNote.writeDetails("bla bla bla details");
             fail("Writing death's details before writing name did not throw any exception");
         } catch(IllegalStateException e){
-            assertEquals("Couldn't write death's details before name", e.getMessage());
+            assertEquals("Death note is empty", e.getMessage());
         }
 
         String name = "Mattia Ronchi";
@@ -101,7 +101,7 @@ class TestDeathNote {
         this.deathNote.writeName(name);
         Thread.sleep(6100);
         this.deathNote.writeDetails("another detail");
-        assertEquals(deathDetails, this.deathNote.getDeathDetails(name));
+        assertEquals("", this.deathNote.getDeathDetails(name));
     }
     
 }
